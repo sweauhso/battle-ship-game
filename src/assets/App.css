@@ -95,7 +95,6 @@
 /* Cell.css */
 .cell {
     width: 40px;
-    /* Adjust the size as needed */
     height: 40px;
     border: 1px solid #ccc;
     display: flex;
