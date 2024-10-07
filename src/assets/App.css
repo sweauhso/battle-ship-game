@@ -13,7 +13,8 @@
 .stats-container {
     display: flex;
     flex-direction: column;
-    width: 250px; /* Adjust as needed */
+    width: 250px;
+    /* Adjust as needed */
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
@@ -24,34 +25,90 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    background-color: orange; /* Style as needed */
+    background-color: orange;
+    /* Style as needed */
     color: white;
     margin-bottom: 10px;
-  }
+}
 
-  .hitpoints-container {
+.hitpoints-container {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-  }
-  
-  .hitpoints-row {
+}
+
+.hitpoints-row {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-  }
-  
-  .ship-image {
-    width: 80px; /* Adjust as needed */
+}
+
+.ship-image {
+    width: 80px;
+    /* Adjust as needed */
     margin-right: 10px;
-  }
-  
-  .hitpoints {
+}
+
+.hitpoints {
     display: flex;
     gap: 5px;
-  }
-  
-  .hitpoint-image {
-    width: 20px; /* Adjust the size of hit/miss images as needed */
+}
+
+.hitpoint-image {
+    width: 20px;
+    /* Adjust the size of hit/miss images as needed */
     height: 20px;
-  }
+}
+
+/* Board.css */
+.board-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.board-row {
+    display: flex;
+}
+
+
+/* Cell.css */
+.cell {
+    width: 40px;
+    /* Adjust the size as needed */
+    height: 40px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+    /* Highlight the cell on hover */
+}
+
+.cell-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* General App Style */
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
