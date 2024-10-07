@@ -1,2 +1,2 @@
 # battle-ship game
-Battleship using TCP Sockets
+Battleship using TCP Sockets.
