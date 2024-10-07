@@ -7,3 +7,51 @@
     background-color: #FFE4C4;
     color: #000000;
 }
+
+/* Stats */
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px; /* Adjust as needed */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scores-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: orange; /* Style as needed */
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .hitpoints-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .hitpoints-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .ship-image {
+    width: 80px; /* Adjust as needed */
+    margin-right: 10px;
+  }
+  
+  .hitpoints {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .hitpoint-image {
+    width: 20px; /* Adjust the size of hit/miss images as needed */
+    height: 20px;
+  }
