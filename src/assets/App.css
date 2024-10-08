@@ -38,12 +38,12 @@ h1 {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-  }
-  
-  .button-1:hover,
-  .button-1:focus {
+}
+
+.button-1:hover,
+.button-1:focus {
     background-color: #F082AC;
-  }
+}
 
 /* Stats */
 
@@ -67,18 +67,19 @@ h1 {
     border-radius: 10px;
 }
 
-.self{
+.self {
     background-color: #FF7F50;
     padding: 10px;
 }
 
-.opponent{
+.opponent {
     background-color: #8A2BE2;
     padding: 10px;
 }
 
-.self, .opponent {
-    flex-grow: 1;             
+.self,
+.opponent {
+    flex-grow: 1;
     padding: 20px;
     text-align: center;
     display: flex;
@@ -171,8 +172,34 @@ h1 {
 
 /* Ships Container */
 .ship-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-}
+    display: flex;                   
+    justify-content: space-between;   
+    align-items: center;               
+    margin-top: 20px;                
+    padding: 10px;                     
+    width: 100%;                       
+    max-width: 800px;                
+    margin: 0 auto;                   
+  }
+  
+  .ship {
+    display: flex;                    
+    justify-content: center;         
+    align-items: center;              
+    background-color: gray;           
+    border: 1px solid #000;           
+    cursor: pointer;                  
+    margin: 0 10px;                   
+    transition: all 0.3s ease;         
+  }
+  
+  .ship-horizontal {
+    width: auto;                       
+    height: 50px;                     
+  }
+  
+  .ship-vertical {
+    width: 50px;                       
+    height: auto;                      
+  }
+  
