@@ -5,7 +5,7 @@ function Nav(){
     return(
         <nav className = "navbar">
             <h1>Battleship Game</h1>
-            <button class="button-1">Restart</button>
+            <button className="button-1">Restart</button>
         </nav>
     );
 }

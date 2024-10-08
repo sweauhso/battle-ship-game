@@ -16,7 +16,7 @@ function Hitpoints() {
         <div className="hitpoints-row" key={index}>
           <img src={ship} alt={`Ship ${index + 1}`} className="ship-image" />
           <div className="hitpoints">
-            {[true, false, true, true].map((isHit, i) => (
+            {[false, false, false, true].map((isHit, i) => (
               <img
                 key={i}
                 src={isHit ? hitImage : missImage}

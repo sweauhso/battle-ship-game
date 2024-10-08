@@ -1,27 +1,35 @@
-import React, { useState} from "react";
-import hitImage from '../../assets/img/Hit.png'
-import missImage from '../../assets/img/Miss.png'
+import React, { useState } from "react";
+import hitImage from '../../assets/img/Hit.png';
+import missImage from '../../assets/img/Miss.png';
 import '../../assets/App.css';
 
-function Cell(){
-    const [status, setStatus] = useState('empty')
+function Cell({ onDrop, onDragOver }) {
+  const [status, setStatus] = useState('empty'); // Can be 'empty', 'ship', 'hit', or 'miss'
 
-    // Just building a foundation for viewing, will implement correct logic later.
-    const handleClick = () => {
-        if (status === 'empty') {
-          // Change status to either 'hit' or 'miss' based on game logic
-          // For this example, we are just toggling between 'hit' and 'miss'
-          const newStatus = Math.random() > 0.5 ? 'hit' : 'miss';
-          setStatus(newStatus);
-        }
-      };
+  // Handle clicking on a cell (for example, to attack it)
+  const handleClick = () => {
+    if (status === 'ship') {
+      // If the cell contains a ship, we can mark it as hit
+      setStatus('hit');
+    } else if (status === 'empty') {
+      // If the cell is empty, mark it as a miss
+      setStatus('miss');
+    }
+  };
 
-      return (
-        <div className="cell" onClick={handleClick}>
-          {status === 'hit' && <img src={hitImage} alt="Hit" className="cell-image" />}
-          {status === 'miss' && <img src={missImage} alt="Miss" className="cell-image" />}
-        </div>
-      );
+  return (
+    <div
+      className="cell"
+      onClick={handleClick}
+      onDrop={onDrop} // Handle drop event (ship placement)
+      onDragOver={onDragOver} // Allow drag over event
+    >
+      {/* Show different images based on the cell status */}
+      {status === 'hit' && <img src={hitImage} alt="Hit" className="cell-image" />}
+      {status === 'miss' && <img src={missImage} alt="Miss" className="cell-image" />}
+      {status === 'ship' && <div className="ship-placeholder"></div>} {/* Placeholder for a ship */}
+    </div>
+  );
 }
 
 export default Cell;

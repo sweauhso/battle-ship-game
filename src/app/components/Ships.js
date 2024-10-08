@@ -11,6 +11,8 @@ const ships = [
 
 // Ship Component
 const Ship = ({ ship }) => {
+  const cellSize = 40; // Set the size of each grid cell to 40px
+
   // State to track orientation for this specific ship
   const [isHorizontal, setIsHorizontal] = useState(true);
 
@@ -31,8 +33,8 @@ const Ship = ({ ship }) => {
       draggable
       className={`ship ship-${isHorizontal ? 'horizontal' : 'vertical'}`}
       style={{
-        width: isHorizontal ? `${ship.length * 50}px` : '50px',
-        height: isHorizontal ? '50px' : `${ship.length * 50}px`,
+        width: isHorizontal ? `${ship.length * cellSize}px` : `${cellSize}px`, // Horizontal width = length * cellSize
+        height: isHorizontal ? `${cellSize}px` : `${ship.length * cellSize}px`, // Vertical height = length * cellSize
         backgroundColor: 'gray',
         marginBottom: '10px',
         cursor: 'pointer',
