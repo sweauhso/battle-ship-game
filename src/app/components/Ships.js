@@ -15,12 +15,7 @@ const Ship = ({ ship }) => {
 
   // State to track orientation for this specific ship
   const [isHorizontal, setIsHorizontal] = useState(true);
-
-  // Handle dragging the ship (sets data on drag start)
-  const handleDragStart = (e) => {
-    e.dataTransfer.setData('ship', JSON.stringify({ ...ship, isHorizontal }));
-  };
-
+ 
   // Handle clicking to rotate the ship
   const handleClick = () => {
     setIsHorizontal(!isHorizontal); // Toggle between horizontal and vertical
@@ -29,8 +24,6 @@ const Ship = ({ ship }) => {
   return (
     <div
       onClick={handleClick} // Toggle orientation on click
-      onDragStart={(e) => handleDragStart(e)} // Start dragging
-      draggable
       className={`ship ship-${isHorizontal ? 'horizontal' : 'vertical'}`}
       style={{
         width: isHorizontal ? `${ship.length * cellSize}px` : `${cellSize}px`, // Horizontal width = length * cellSize
