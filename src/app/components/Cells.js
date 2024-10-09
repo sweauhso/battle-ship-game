@@ -3,9 +3,7 @@ import hitImage from '../../assets/img/Hit.png';
 import missImage from '../../assets/img/Miss.png';
 import '../../assets/App.css';
 
-function Cell({ id, row, col }) {
-  
-
+function Cell({ id, row, col, handleDrop, handleDragOver }) {
   const [status, setStatus] = useState('empty'); // Can be 'empty', 'ship', 'hit', or 'miss'
 
   // Handle clicking on a cell (for example, to attack it)
@@ -18,12 +16,15 @@ function Cell({ id, row, col }) {
       setStatus('miss');
     }
   };
+  
 
   return (
     <div
       className="cell"
       onClick={handleClick}
-      id = {id}
+      onDrop={(e) => handleDrop(e, row, col)} // Handle drop event for the ship
+      onDragOver={handleDragOver} // Allow the cell to be a drop target
+      id={id}
     >
       {/* Show different images based on the cell status */}
       {status === 'hit' && <img src={hitImage} alt="Hit" className="cell-image" />}

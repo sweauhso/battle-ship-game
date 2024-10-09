@@ -15,6 +15,14 @@ const Ship = ({ ship }) => {
   // Handling dragging and dropping
   const handleDragStart = (e) => {
     // Storing ship data (name, length, orientation) in the dataTransfer object
+    const shipData = {
+      name: ship.name,
+      length: ship.length,
+      isHorizontal: isHorizontal,
+  };
+
+  console.log('Ship Data being dragged:', shipData);
+  
     e.dataTransfer.setData(
       'ship',
       JSON.stringify({
