@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import hitImage from '../../assets/img/Hit.png';
 import missImage from '../../assets/img/Miss.png';
 import '../../assets/App.css';
 
-function Cell({ id, row, col, handleDrop, handleDragOver }) {
-  const [status, setStatus] = useState('empty'); // Can be 'empty', 'ship', 'hit', or 'miss'
+function Cell({ id, row, col, handleDrop, handleDragOver, boardState }) {
+  const [status, setStatus] = useState('empty'); // Default to 'empty' for initialization
+
+  // Sync the cell's state with the boardState whenever the board updates
+  useEffect(() => {
+    if (boardState[row] && boardState[row][col]) {  // Check if boardState[row] exists
+      setStatus(boardState[row][col]);  // Set the status based on the board state
+    }
+  }, [boardState, row, col]);
 
   // Handle clicking on a cell (for example, to attack it)
   const handleClick = () => {
@@ -16,7 +23,6 @@ function Cell({ id, row, col, handleDrop, handleDragOver }) {
       setStatus('miss');
     }
   };
-  
 
   return (
     <div
@@ -25,6 +31,7 @@ function Cell({ id, row, col, handleDrop, handleDragOver }) {
       onDrop={(e) => handleDrop(e, row, col)} // Handle drop event for the ship
       onDragOver={handleDragOver} // Allow the cell to be a drop target
       id={id}
+      style={{ backgroundColor: status === 'ship' ? 'lightblue' : 'white' }}  // Example: Change color for ship
     >
       {/* Show different images based on the cell status */}
       {status === 'hit' && <img src={hitImage} alt="Hit" className="cell-image" />}

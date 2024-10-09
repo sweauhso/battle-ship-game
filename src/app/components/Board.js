@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Cell from './Cells'; // Ensure the correct path to your Cell component
-import Ship from './Ships'; // Ensure the correct path to your Ship component
+import Cell from './Cells'; 
+import Ship from './Ships'; 
 import '../../assets/App.css';
 
 function Board() {
@@ -24,37 +24,33 @@ function Board() {
         e.preventDefault();
         e.stopPropagation();
     
-        const data = e.dataTransfer.getData('ship');
-        console.log('Data received on drop:', data); // Debugging: Check if data is present
-
-        if (!data) {
-            console.error('No ship data found in dataTransfer');
-            return;
-        }
-
         // Get the ship data from the drag event
         const droppedShip = JSON.parse(e.dataTransfer.getData('ship'));
-
+    
         const { name, length, isHorizontal } = droppedShip;
-
+    
         // Copy the current board state
         const newBoardState = [...boardState];
-
+    
         // Place the ship on the grid starting at the drop position
         if (isHorizontal) {
             if (col + length <= gridSize) { // Ensure ship doesn't go out of bounds horizontally
                 for (let i = 0; i < length; i++) {
                     newBoardState[row][col + i] = 'ship'; // Update the board state with the ship
                 }
+            } else {
+                alert("Ship doesn't fit");
             }
         } else {
             if (row + length <= gridSize) { // Ensure ship doesn't go out of bounds vertically
                 for (let i = 0; i < length; i++) {
                     newBoardState[row + i][col] = 'ship'; // Update the board state with the ship
                 }
+            } else {
+                alert("Ship doesn't fit");
             }
         }
-
+    
         // Update the board state with the new ship position
         setBoardState(newBoardState);
     };
@@ -65,16 +61,16 @@ function Board() {
         for (let row = 0; row < gridSize; row++) {
             const cells = [];
             for (let col = 0; col < gridSize; col++) {
-                // Each cell is given a unique id based on its row and column
-                const cellId = `(${row + 1}, ${col + 1})`;
+                const cellId = `(${row + 1}, ${col + 1})`;  // Keep cellId as 1-based for display purposes
                 cells.push(
                     <Cell
                         key={cellId}
                         id={cellId}
-                        row={row + 1}
-                        col={col + 1}
+                        row={row}  // Pass 0-based row index to match the array indices
+                        col={col}  // Pass 0-based col index to match the array indices
                         handleDrop={handleDrop}
                         handleDragOver={handleDragOver}
+                        boardState={boardState}  // Pass the boardState to each Cell
                     />
                 );
             }
