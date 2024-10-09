@@ -31,6 +31,8 @@ const Ship = ({ ship }) => {
         isHorizontal: isHorizontal,
       })
     );
+
+
     // Optionally, you can change the appearance of the drag image
     e.dataTransfer.setDragImage(e.target, 0, 0); // Custom drag image position (top-left corner)
   };
@@ -39,7 +41,7 @@ const Ship = ({ ship }) => {
     <div
       draggable = 'true'
       onClick={handleClick} 
-      onDrag={handleDragStart}
+      onDragStart={(e) => handleDragStart(e)}
       className={`ship ship-${isHorizontal ? 'horizontal' : 'vertical'}`}
       style={{
         width: isHorizontal ? `${ship.length * cellSize}px` : `${cellSize}px`, // Horizontal width = length * cellSize

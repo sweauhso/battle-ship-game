@@ -23,7 +23,7 @@ function Board() {
     const handleDrop = (e, row, col) => {
         e.preventDefault();
         e.stopPropagation();
-
+    
         const data = e.dataTransfer.getData('ship');
         console.log('Data received on drop:', data); // Debugging: Check if data is present
 
