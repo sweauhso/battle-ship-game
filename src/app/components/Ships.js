@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
 
-// Define the ships
-const ships = [
-  { name: 'Aircraft', length: 5 },
-  { name: 'Battleship', length: 4 },
-  { name: 'Submarine', length: 4 },
-  { name: 'Cruiser', length: 3 },
-  { name: 'Carrier', length: 2 }
-];
-
 // Ship Component
 const Ship = ({ ship }) => {
   const cellSize = 40; // Set the size of each grid cell to 40px
 
   // State to track orientation for this specific ship
   const [isHorizontal, setIsHorizontal] = useState(true);
- 
+
   // Handle clicking to rotate the ship
   const handleClick = () => {
     setIsHorizontal(!isHorizontal); // Toggle between horizontal and vertical
   };
 
+  // Handling dragging and dropping
+  const handleDragStart = (e) => {
+    // Storing ship data (name, length, orientation) in the dataTransfer object
+    e.dataTransfer.setData(
+      'ship',
+      JSON.stringify({
+        name: ship.name,
+        length: ship.length,
+        isHorizontal: isHorizontal,
+      })
+    );
+    // Optionally, you can change the appearance of the drag image
+    e.dataTransfer.setDragImage(e.target, 0, 0); // Custom drag image position (top-left corner)
+  };
+
   return (
     <div
-      onClick={handleClick} // Toggle orientation on click
+      draggable = 'true'
+      onClick={handleClick} 
+      onDrag={handleDragStart}
       className={`ship ship-${isHorizontal ? 'horizontal' : 'vertical'}`}
       style={{
         width: isHorizontal ? `${ship.length * cellSize}px` : `${cellSize}px`, // Horizontal width = length * cellSize
@@ -40,6 +48,14 @@ const Ship = ({ ship }) => {
 
 // Main Game Component
 const BattleshipGame = () => {
+  const ships = [
+    { name: 'Aircraft', length: 5 },
+    { name: 'Battleship', length: 4 },
+    { name: 'Submarine', length: 4 },
+    { name: 'Cruiser', length: 3 },
+    { name: 'Carrier', length: 2 }
+  ];
+
   return (
     <div className="ship-container">
       {ships.map((ship) => (

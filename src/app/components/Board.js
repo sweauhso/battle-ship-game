@@ -1,10 +1,12 @@
 import React from 'react';
 import Cell from './Cells';
+import Ship from './Ships'
 import '../../assets/App.css';
 
 function Board() {
     const gridSize = 10;
-
+    const cellSize = 40;
+    
     // Render the board
     const renderGrid = () => {
         const rows = [];
