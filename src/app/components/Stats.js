@@ -4,10 +4,10 @@ import Hitpoints from './Hitpoints'
 import '../../assets/App.css';
 
 
-function Stats( { ships, counter } ){
+function Stats( { ships, counter, shipCounter } ){
     return(
         <div className = "stats-container">
-            <Scores counter={counter}/>
+            <Scores counter={counter} shipCounter={shipCounter}/>
             <Hitpoints ships = {ships}/>
         </div>
     );

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Cell from './Cells';
 import '../../assets/App.css';
 
-function Board( {setShips, onCellClick} ) {
+function Board( {setShips, onCellClick, onShipClick} ) {
     const gridSize = 10;
 
     // Board state: 2D array filled with 'empty' to represent unoccupied cells
@@ -123,6 +123,7 @@ function Board( {setShips, onCellClick} ) {
                         boardState={boardState}  // Pass the boardState to each Cell
                         setShips = { setShips }
                         onCellClick = {onCellClick}
+                        onShipClick = {onShipClick}
                     />
                 );
             }

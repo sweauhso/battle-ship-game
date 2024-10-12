@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../assets/App.css';
 
-function Scores({counter}) {
+function Scores({counter, shipCounter}) {
     return (
         <div className="scores-container">
             <div className="self">
-                <h2>0</h2>
+                <h2>{shipCounter}</h2>
                 <p>Hits</p>
             </div>
             <div className="opponent">

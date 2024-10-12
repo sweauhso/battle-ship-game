@@ -20,18 +20,38 @@ function App() {
   ]);
 
   const [counter, setCounter] = useState(0);
+  const [shipCounter, setShipCounter] = useState(0);
+
+  const handleShipClick = () => {
+    setShipCounter((prevCounter) => prevCounter + 1); 
+  }
   
   const handleCellClick = () => {
-    setCounter((prevCounter) => prevCounter + 1); // Increment the counter
+    setCounter((prevCounter) => prevCounter + 1); 
+  };
+
+  const resetGame = () => {
+    // Reset ships to their initial state
+    setShips([
+      { name: 'Aircraft', image: ship1, length: 5, coordinates: [], hidden: false },
+      { name: 'Battleship', image: ship2, length: 4, coordinates: [], hidden: false },
+      { name: 'Submarine', image: ship3, length: 4, coordinates: [], hidden: false },
+      { name: 'Cruiser', image: ship4, length: 3, coordinates: [], hidden: false },
+      { name: 'Carrier', image: ship5, length: 2, coordinates: [], hidden: false }
+    ]);
+  
+    // Reset counters to their initial values
+    setCounter(0);
+    setShipCounter(0);
   };
 
 
   return (
     <div className="App">
-      <Nav />
+      <Nav resetGame={resetGame}/>
       <div className="game-container">
-        <Stats ships={ships} counter={counter}/>
-        <Board setShips={setShips} onCellClick={handleCellClick}/>
+        <Stats ships={ships} counter={counter} shipCounter={shipCounter}/>
+        <Board setShips={setShips} onCellClick={handleCellClick} onShipClick={handleShipClick}/>
       </div>
       <div className="ship-container">
         {ships.map((ship) => (

@@ -3,7 +3,7 @@ import hitImage from '../../assets/img/Hit.png';
 import missImage from '../../assets/img/Miss.png';
 import '../../assets/App.css';
 
-function Cell({ id, row, col, handleDrop, handleDragOver, boardState, setShips, onCellClick }) {
+function Cell({ id, row, col, handleDrop, handleDragOver, boardState, setShips, onCellClick, onShipClick }) {
   const [status, setStatus] = useState('empty'); // Default to 'empty' for initialization
 
   // Sync the cell's state with the boardState whenever the board updates
@@ -32,6 +32,7 @@ function Cell({ id, row, col, handleDrop, handleDragOver, boardState, setShips, 
         })
       );
       onCellClick();
+      onShipClick();
 
     } else if (status === 'empty') {
       // If the cell is empty, mark it as a miss
