@@ -7,12 +7,20 @@ import '../assets/App.css';
 
 function App() {
   const [ships, setShips] = useState([
-    { name: 'Aircraft', length: 5},
-    { name: 'Battleship', length: 4},
-    { name: 'Submarine', length: 4},
-    { name: 'Cruiser', length: 3},
-    { name: 'Carrier', length: 2}
+    { name: 'Aircraft', length: 5, coordinates: []},
+    { name: 'Battleship', length: 4, coordinates: []},
+    { name: 'Submarine', length: 4, coordinates: []},
+    { name: 'Cruiser', length: 3, coordinates: []},
+    { name: 'Carrier', length: 2, coordinates: []}
   ]);
+
+  const [placedShips, setPlacedShips] = useState([
+
+  ]);
+
+  function handleClick() {
+    console.log(ships)
+  }
   
   return (
     <div className="App">
@@ -26,6 +34,7 @@ function App() {
           <Ship key={ship.name} ship={ship} />
         ))}
       </div>
+      <button onClick = {handleClick}>Click Me</button>
     </div>
   );
 }

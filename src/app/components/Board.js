@@ -43,12 +43,23 @@ function Board( {setShips} ) {
                 }
         
                 if (canPlace) {
+                    const newCoordinates = [];
+                
                     // Place the ship
                     for (let i = 0; i < length; i++) {
                         newBoardState[row][col + i] = 'ship'; // Update the board state with the ship
+                        newCoordinates.push([row, col + i]);  // Store the (row, col) as a tuple
                     }
+                
+                    // Update the ship's coordinates in the state
                     setShips((prevShips) =>
-                        prevShips.filter((ship) => ship.name !== name)
+                        prevShips
+                            .map((ship) =>
+                                ship.name === name
+                                    ? { ...ship, coordinates: newCoordinates } // Update coordinates for the specific ship
+                                    : ship
+                            )
+                            .filter((ship) => ship.name !== name)  // Remove the placed ship from the available ships
                     );
                 } else {
                     alert("Ship overlaps with another ship!");
@@ -58,22 +69,33 @@ function Board( {setShips} ) {
             }
         } else {
             if (row + length <= gridSize) { // Ensure ship doesn't go out of bounds vertically
+                const newCoordinates = [];
+                
                 // Check for overlap before placing the ship
                 let canPlace = true;
                 for (let i = 0; i < length; i++) {
-                    if (newBoardState[row + i][col] === 'ship') {  // Check if the position is already occupied vertically
+                    if (newBoardState[row + i][col] === 'ship') {  // Check if the position is already occupied
                         canPlace = false;
-                        break;  // Stop checking further if we find an overlap
+                        break;
                     }
                 }
         
                 if (canPlace) {
-                    // Place the ship vertically
+                    // Place the ship
                     for (let i = 0; i < length; i++) {
-                        newBoardState[row + i][col] = 'ship'; // Update the board state with the ship
+                        newBoardState[row + i][col] = 'ship'; // Place the ship vertically
+                        newCoordinates.push([row + i, col]);  // Store the (row, col) as a tuple for vertical placement
                     }
+        
+                    // Update the ship's coordinates in the state
                     setShips((prevShips) =>
-                        prevShips.filter((ship) => ship.name !== name)
+                        prevShips
+                            .map((ship) =>
+                                ship.name === name
+                                    ? { ...ship, coordinates: newCoordinates } // Update coordinates for the specific ship
+                                    : ship
+                            )
+                            .filter((ship) => ship.name !== name)  // Remove the placed ship from the available ships
                     );
                 } else {
                     alert("Ship overlaps with another ship!");
