@@ -53,13 +53,11 @@ function Board( {setShips} ) {
                 
                     // Update the ship's coordinates in the state
                     setShips((prevShips) =>
-                        prevShips
-                            .map((ship) =>
-                                ship.name === name
-                                    ? { ...ship, coordinates: newCoordinates } // Update coordinates for the specific ship
-                                    : ship
-                            )
-                            .filter((ship) => ship.name !== name)  // Remove the placed ship from the available ships
+                        prevShips.map((ship) =>
+                            ship.name === name
+                                ? { ...ship, coordinates: newCoordinates, hidden: true }  // Set `hidden` to true
+                                : ship
+                        )
                     );
                 } else {
                     alert("Ship overlaps with another ship!");
@@ -89,13 +87,11 @@ function Board( {setShips} ) {
         
                     // Update the ship's coordinates in the state
                     setShips((prevShips) =>
-                        prevShips
-                            .map((ship) =>
-                                ship.name === name
-                                    ? { ...ship, coordinates: newCoordinates } // Update coordinates for the specific ship
-                                    : ship
-                            )
-                            .filter((ship) => ship.name !== name)  // Remove the placed ship from the available ships
+                        prevShips.map((ship) =>
+                            ship.name === name
+                                ? { ...ship, coordinates: newCoordinates, hidden: true }  // Set `hidden` to true
+                                : ship
+                        )
                     );
                 } else {
                     alert("Ship overlaps with another ship!");
