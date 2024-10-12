@@ -1,5 +1,4 @@
-// import React, { useState } from "react";
-import React from 'react';
+import React, { useState } from "react";
 import ship1 from '../../assets/img/Aircraft_Shape.png'; // Largest ship
 import ship2 from '../../assets/img/Battleship_Shape.png';
 import ship3 from '../../assets/img/Submarine_Shape.png';
@@ -10,45 +9,8 @@ import missImage from '../../assets/img/Miss_small.png';
 import '../../assets/App.css';
 
 
-function Hitpoints() {
-
-  // const [hit, setHit] = useState(missed)
-
-  // function handleClick() {
-  //   setHit(hit) 
-  // }
-
-  // const shipValues = {
-  //   aircraftValues: {
-  //     image: '../../assets/img/Aircraft_Shape.png',
-  //     length: 5,
-  //     hit: missed
-  //   },
-
-  //   battleshipValues: {
-  //     image: '../../assets/img/Battleship_Shape.png',
-  //     length: 4,
-  //     hit: missed
-  //   },
-
-  //   submarineValues: {
-  //     image: '../../assets/img/Submarine_Shape.png',
-  //     length: 4,
-  //     hit: missed
-  //   },
-
-  //   cruiserValues: {
-  //     image: '../../assets/img/Cruiser_Shape.png',
-  //     length: 3,
-  //     hit: missed
-  //   },
-
-  //   carrierValues: {
-  //     image: '../../assets/img/Carrier_Shape.png',
-  //     length: 2,
-  //     hit: missed
-  //   }
-  // }
+function Hitpoints({ ships }) {
+  const [hit, setHit] = useState(false);
 
   return (
     <div className="hitpoints-container">

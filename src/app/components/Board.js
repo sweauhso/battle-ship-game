@@ -121,6 +121,7 @@ function Board( {setShips} ) {
                         handleDrop={handleDrop}
                         handleDragOver={handleDragOver}
                         boardState={boardState}  // Pass the boardState to each Cell
+                        setShips = { setShips }
                     />
                 );
             }
