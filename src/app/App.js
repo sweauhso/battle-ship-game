@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import ship1 from '../assets/img/Aircraft_Shape.png'; // Largest ship
+import ship2 from '../assets/img/Battleship_Shape.png';
+import ship3 from '../assets/img/Submarine_Shape.png';
+import ship4 from '../assets/img/Cruiser_Shape.png';
+import ship5 from '../assets/img/Carrier_Shape.png'; // Smallest ship
 import Nav from './components/Nav';
 import Stats from './components/Stats';
 import Board from './components/Board';
@@ -7,11 +12,11 @@ import '../assets/App.css';
 
 function App() {
   const [ships, setShips] = useState([
-    { name: 'Aircraft', length: 5, coordinates: [], hidden: false },
-    { name: 'Battleship', length: 4, coordinates: [], hidden: false },
-    { name: 'Submarine', length: 4, coordinates: [], hidden: false },
-    { name: 'Cruiser', length: 3, coordinates: [], hidden: false },
-    { name: 'Carrier', length: 2, coordinates: [], hidden: false }
+    { name: 'Aircraft', image: ship1, length: 5, coordinates: [], hidden: false },
+    { name: 'Battleship', image: ship2, length: 4, coordinates: [], hidden: false },
+    { name: 'Submarine', image: ship3, length: 4, coordinates: [], hidden: false },
+    { name: 'Cruiser', image: ship4, length: 3, coordinates: [], hidden: false },
+    { name: 'Carrier', image: ship5, length: 2, coordinates: [], hidden: false }
   ]);
 
   function handleClick() {
@@ -22,7 +27,7 @@ function App() {
     <div className="App">
       <Nav />
       <div className="game-container">
-        <Stats />
+        <Stats ships={ships}/>
         <Board setShips={setShips} />
       </div>
       <div className="ship-container">
