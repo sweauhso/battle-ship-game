@@ -19,6 +19,12 @@ function App() {
     { name: 'Carrier', image: ship5, length: 2, coordinates: [], hidden: false }
   ]);
 
+  const [counter, setCounter] = useState(0);
+  
+  const handleCellClick = () => {
+    setCounter((prevCounter) => prevCounter + 1); // Increment the counter
+  };
+
   function handleClick() {
     console.log(ships)
   }
@@ -27,8 +33,8 @@ function App() {
     <div className="App">
       <Nav />
       <div className="game-container">
-        <Stats ships={ships}/>
-        <Board setShips={setShips} />
+        <Stats ships={ships} counter={counter}/>
+        <Board setShips={setShips} onCellClick={handleCellClick}/>
       </div>
       <div className="ship-container">
         {ships.map((ship) => (

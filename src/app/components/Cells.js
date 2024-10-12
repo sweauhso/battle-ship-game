@@ -3,7 +3,7 @@ import hitImage from '../../assets/img/Hit.png';
 import missImage from '../../assets/img/Miss.png';
 import '../../assets/App.css';
 
-function Cell({ id, row, col, handleDrop, handleDragOver, boardState, setShips }) {
+function Cell({ id, row, col, handleDrop, handleDragOver, boardState, setShips, onCellClick }) {
   const [status, setStatus] = useState('empty'); // Default to 'empty' for initialization
 
   // Sync the cell's state with the boardState whenever the board updates
@@ -31,10 +31,12 @@ function Cell({ id, row, col, handleDrop, handleDragOver, boardState, setShips }
           return { ...ship, coordinates: updatedCoordinates }; // Update the ship's coordinates
         })
       );
+      onCellClick();
 
     } else if (status === 'empty') {
       // If the cell is empty, mark it as a miss
       setStatus('miss');
+      onCellClick();
     }
   };
 
