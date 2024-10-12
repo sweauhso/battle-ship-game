@@ -7,11 +7,11 @@ import '../assets/App.css';
 
 function App() {
   const [ships, setShips] = useState([
-    { name: 'Aircraft', length: 5, isStill: true },
-    { name: 'Battleship', length: 4, isStill: true },
-    { name: 'Submarine', length: 4, isStill: true },
-    { name: 'Cruiser', length: 3, isStill: true },
-    { name: 'Carrier', length: 2, isStill: true }
+    { name: 'Aircraft', length: 5},
+    { name: 'Battleship', length: 4},
+    { name: 'Submarine', length: 4},
+    { name: 'Cruiser', length: 3},
+    { name: 'Carrier', length: 2}
   ]);
   
   return (

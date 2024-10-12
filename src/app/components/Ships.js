@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Ship Component
 const Ship = ({ ship }) => {
   const cellSize = 40; 
 
