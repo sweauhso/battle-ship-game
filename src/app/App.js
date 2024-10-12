@@ -25,9 +25,6 @@ function App() {
     setCounter((prevCounter) => prevCounter + 1); // Increment the counter
   };
 
-  function handleClick() {
-    console.log(ships)
-  }
 
   return (
     <div className="App">
@@ -43,7 +40,6 @@ function App() {
           )
         ))}
       </div>
-      <button onClick={handleClick}>Click Me</button>
     </div>
   );
 }
