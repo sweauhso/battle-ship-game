@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
-import Cell from './Cells'; 
-import Ship from './Ships'; 
+import Cell from './Cells';
 import '../../assets/App.css';
 
-function Board() {
+function Board( {setShips} ) {
     const gridSize = 10;
-    const cellSize = 40;
-
-
 
     // Board state: 2D array filled with 'empty' to represent unoccupied cells
     const [boardState, setBoardState] = useState(
@@ -23,15 +19,22 @@ function Board() {
     const handleDrop = (e, row, col) => {
         e.preventDefault();
         e.stopPropagation();
-    
+
+
         // Get the ship data from the drag event
         const droppedShip = JSON.parse(e.dataTransfer.getData('ship'));
-    
+
         const { name, length, isHorizontal } = droppedShip;
-    
+
+        setShips((prevShips) =>
+            prevShips.map((ship) =>
+                ship.name === name ? { ...ship, isStill: false } : ship
+            )
+        );
+
         // Copy the current board state
         const newBoardState = [...boardState];
-    
+
         // Place the ship on the grid starting at the drop position
         if (isHorizontal) {
             if (col + length <= gridSize) { // Ensure ship doesn't go out of bounds horizontally
@@ -50,7 +53,7 @@ function Board() {
                 alert("Ship doesn't fit");
             }
         }
-    
+
         // Update the board state with the new ship position
         setBoardState(newBoardState);
     };
@@ -87,7 +90,7 @@ function Board() {
         <div className="board-container">
             {renderGrid()}
         </div>
-        
+
     );
 }
 
