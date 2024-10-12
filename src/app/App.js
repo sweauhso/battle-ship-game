@@ -19,6 +19,11 @@ function App() {
     { name: 'Carrier', image: ship5, length: 2, coordinates: [], hidden: false }
   ]);
 
+  // Board state: 2D array filled with 'empty' to represent unoccupied cells
+  const [boardState, setBoardState] = useState(
+      Array.from({ length: 10 }, () => Array(10).fill('empty'))
+  );
+
   const [counter, setCounter] = useState(0);
   const [shipCounter, setShipCounter] = useState(0);
 
@@ -43,6 +48,7 @@ function App() {
     // Reset counters to their initial values
     setCounter(0);
     setShipCounter(0);
+    setBoardState(Array.from({ length: 10 }, () => Array(10).fill('empty')));
   };
 
 
@@ -51,7 +57,7 @@ function App() {
       <Nav resetGame={resetGame}/>
       <div className="game-container">
         <Stats ships={ships} counter={counter} shipCounter={shipCounter}/>
-        <Board setShips={setShips} onCellClick={handleCellClick} onShipClick={handleShipClick}/>
+        <Board setShips={setShips} onCellClick={handleCellClick} onShipClick={handleShipClick} boardState={boardState} setBoardState={setBoardState}/>
       </div>
       <div className="ship-container">
         {ships.map((ship) => (

@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import Cell from './Cells';
 import '../../assets/App.css';
 
-function Board( {setShips, onCellClick, onShipClick} ) {
+function Board( {setShips, onCellClick, onShipClick, boardState, setBoardState} ) {
+
     const gridSize = 10;
-
-    // Board state: 2D array filled with 'empty' to represent unoccupied cells
-    const [boardState, setBoardState] = useState(
-        Array.from({ length: gridSize }, () => Array(gridSize).fill('empty'))
-    );
-
+    
     // Handle the drag over event to allow dropping
     const handleDragOver = (e) => {
         e.preventDefault(); // Prevent default behavior to allow drop
