@@ -26,12 +26,7 @@ function Board( {setShips} ) {
 
         const { name, length, isHorizontal } = droppedShip;
 
-        setShips((prevShips) =>
-            prevShips.map((ship) =>
-                ship.name === name ? { ...ship, isStill: false } : ship
-            )
-        );
-
+        
         // Copy the current board state
         const newBoardState = [...boardState];
 
@@ -41,6 +36,9 @@ function Board( {setShips} ) {
                 for (let i = 0; i < length; i++) {
                     newBoardState[row][col + i] = 'ship'; // Update the board state with the ship
                 }
+                setShips((prevShips) =>
+                    prevShips.filter((ship) => ship.name !== name)
+                  );
             } else {
                 alert("Ship doesn't fit");
             }
@@ -49,6 +47,9 @@ function Board( {setShips} ) {
                 for (let i = 0; i < length; i++) {
                     newBoardState[row + i][col] = 'ship'; // Update the board state with the ship
                 }
+                setShips((prevShips) =>
+                    prevShips.filter((ship) => ship.name !== name)
+                  );
             } else {
                 alert("Ship doesn't fit");
             }

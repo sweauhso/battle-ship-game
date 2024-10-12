@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 // Ship Component
 const Ship = ({ ship }) => {
-  const { name, length, isStill } = ship;
   const cellSize = 40; 
 
   // State to track orientation for this specific ship
@@ -50,7 +49,6 @@ const Ship = ({ ship }) => {
         backgroundColor: 'gray',
         marginBottom: '10px',
         cursor: 'pointer',
-        opacity: isStill ? 1 : 0.5
       }}
     >
       {ship.name}

@@ -13,13 +13,13 @@ function App() {
     { name: 'Cruiser', length: 3, isStill: true },
     { name: 'Carrier', length: 2, isStill: true }
   ]);
-
+  
   return (
     <div className="App">
       <Nav />
       <div className="game-container">
         <Stats />
-        <Board setShips = {setShips}/>
+        <Board setShips = {setShips} />
       </div>
       <div className="ship-container">
         {ships.map((ship) => (

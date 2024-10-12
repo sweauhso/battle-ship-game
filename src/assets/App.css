@@ -172,15 +172,15 @@ h1 {
 
 /* Ships Container */
 .ship-container {
-    display: flex;                   
+    display: inline-flex;              
     justify-content: space-between;   
-    align-items: center;               
+    align-items: center;                
     margin-top: 20px;                
-    padding: 10px;                     
-    width: 100%;                       
-    max-width: 800px;                
-    margin: 0 auto;                   
-  }
+    padding-top: 10px;                     
+    margin: 0 auto;             
+    border: 1px solid #ccc;           
+    background-color: #FFE4C4;;  
+}
   
   .ship {
     display: flex;                    
