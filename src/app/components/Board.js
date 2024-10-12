@@ -33,25 +33,53 @@ function Board( {setShips} ) {
         // Place the ship on the grid starting at the drop position
         if (isHorizontal) {
             if (col + length <= gridSize) { // Ensure ship doesn't go out of bounds horizontally
+                // Check for overlap before placing the ship
+                let canPlace = true;
                 for (let i = 0; i < length; i++) {
-                    newBoardState[row][col + i] = 'ship'; // Update the board state with the ship
+                    if (newBoardState[row][col + i] === 'ship') {  // Check if the position is already occupied
+                        canPlace = false;
+                        break;  // Stop checking further if we find an overlap
+                    }
                 }
-                setShips((prevShips) =>
-                    prevShips.filter((ship) => ship.name !== name)
-                  );
+        
+                if (canPlace) {
+                    // Place the ship
+                    for (let i = 0; i < length; i++) {
+                        newBoardState[row][col + i] = 'ship'; // Update the board state with the ship
+                    }
+                    setShips((prevShips) =>
+                        prevShips.filter((ship) => ship.name !== name)
+                    );
+                } else {
+                    alert("Ship overlaps with another ship!");
+                }
             } else {
                 alert("Ship doesn't fit");
             }
         } else {
             if (row + length <= gridSize) { // Ensure ship doesn't go out of bounds vertically
+                // Check for overlap before placing the ship
+                let canPlace = true;
                 for (let i = 0; i < length; i++) {
-                    newBoardState[row + i][col] = 'ship'; // Update the board state with the ship
+                    if (newBoardState[row + i][col] === 'ship') {  // Check if the position is already occupied vertically
+                        canPlace = false;
+                        break;  // Stop checking further if we find an overlap
+                    }
                 }
-                setShips((prevShips) =>
-                    prevShips.filter((ship) => ship.name !== name)
-                  );
+        
+                if (canPlace) {
+                    // Place the ship vertically
+                    for (let i = 0; i < length; i++) {
+                        newBoardState[row + i][col] = 'ship'; // Update the board state with the ship
+                    }
+                    setShips((prevShips) =>
+                        prevShips.filter((ship) => ship.name !== name)
+                    );
+                } else {
+                    alert("Ship overlaps with another ship!");
+                }
             } else {
-                alert("Ship doesn't fit");
+                alert("Ship doesn't fit vertically");
             }
         }
 
